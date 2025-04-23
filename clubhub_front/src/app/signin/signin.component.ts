@@ -34,12 +34,10 @@ export class SigninComponent {
   redirectUserBasedOnRole(role: string): void {
     if (role === 'Admin') {
       this.router.navigate(['/admin']);
-    } else if (role === 'TechnicalUser') {
-      this.router.navigate(['/technical-user']);
-    } else if (role === 'SalesUser') {
-      this.router.navigate(['/sales-user']);
-    } else if (role === 'User') {
-      this.router.navigate(['/user-dashboard']);
+    } else if (role === 'Organisator') {
+      this.router.navigate(['/Organisator']);
+    } else if (role === 'Student') {
+      this.router.navigate(['/event']); 
     } else {
       alert('Unknown role. Please contact support.');
     }
