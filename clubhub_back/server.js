@@ -17,7 +17,8 @@ app.use(express.json());
 
 app.use('/api/signup', signupRoute);
 app.use('/api/signin', signinRoute);
-app.use('/api/event', eventRoute);
+app.use('/api/events', eventRoute);
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -2,11 +2,16 @@ import { Routes } from '@angular/router';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { EventComponent } from './event/event.component';
+import { AdminComponent } from './admin/admin.component'
 import { AuthGuard } from './auth.guard'; // use your actual path
+import { ManageEventsComponent } from './admin/manage-events/manage-events.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component'
 
 export const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'admin', component: AdminDashboardComponent },
+  { path: 'admin/events', component: ManageEventsComponent },
   {
     path: 'event',
     component: EventComponent,
