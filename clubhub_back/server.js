@@ -7,7 +7,10 @@ dotenv.config();
 const signupRoute = require('./routes/signup');
 const signinRoute = require('./routes/signin');
 const eventRoute = require('./routes/event');
-
+const getUsersRoute = require('./routes/get-users');
+const deleteUserRoutes = require('./routes/delete-user');  
+const updateUserRoutes = require('./routes/update-user');
+const getUserByIdRoutes = require('./routes/get-user-by-id');
 
 
 const app = express();
@@ -18,6 +21,10 @@ app.use(express.json());
 app.use('/api/signup', signupRoute);
 app.use('/api/signin', signinRoute);
 app.use('/api/events', eventRoute);
+app.use ('/api/users', getUsersRoute);
+app.use('/api/users', deleteUserRoutes);  
+app.use('/api/users', updateUserRoutes);
+app.use('/api/users', getUserByIdRoutes);
 
 
 const PORT = process.env.PORT || 5000;

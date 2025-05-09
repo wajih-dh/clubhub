@@ -2,10 +2,11 @@ import { Routes } from '@angular/router';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { EventComponent } from './event/event.component';
-import { AdminComponent } from './admin/admin.component'
 import { AuthGuard } from './auth.guard'; // use your actual path
 import { ManageEventsComponent } from './admin/manage-events/manage-events.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component'
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 export const routes: Routes = [
   { path: 'signin', component: SigninComponent },
@@ -17,6 +18,18 @@ export const routes: Routes = [
     component: EventComponent,
     canActivate: [AuthGuard],
     data: { roles: ['Admin', 'Student'] }
+  },
+  { 
+    path: 'add-user', 
+    component: AddUserComponent, 
+    canActivate: [AuthGuard], 
+    data: { role: 'Admin' }
+  },
+  { 
+    path: 'update-user/:id', // Route for updating a user
+    component: UpdateUserComponent, 
+    canActivate: [AuthGuard], 
+    data: { role: 'Admin' } 
   },
   { path: '', redirectTo: 'signin', pathMatch: 'full' }
 ];

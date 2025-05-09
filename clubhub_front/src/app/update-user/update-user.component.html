@@ -1,0 +1,59 @@
+<div *ngIf="username; else loading" class="update-user-container">
+  <div class="update-user-box">
+    <h2 class="text-center mb-4">Update User</h2>
+
+    <form class="update-user-form" (ngSubmit)="onSubmit()">
+      <!-- Username -->
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          [(ngModel)]="username"
+          name="username"
+          required
+        />
+      </div>
+  
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          [(ngModel)]="email"
+          name="email"
+          required
+        />
+      </div>
+  
+      <!-- Role Dropdown -->
+      <div class="mb-3">
+        <label for="role" class="form-label">Role</label>
+        <select
+          class="form-select"
+          id="role"
+          [(ngModel)]="role"
+          name="role"
+          required
+        >
+          <option *ngFor="let r of roles" [value]="r">{{ r }}</option>
+        </select>
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary w-100">Update User</button>
+    </form>
+  </div>
+</div>
+
+<!-- Loading State -->
+<ng-template #loading>
+  <div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-template>

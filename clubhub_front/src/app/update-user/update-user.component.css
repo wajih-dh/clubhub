@@ -1,0 +1,63 @@
+.update-user-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/assets/bg0.avif'); /* Consistent background */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+  }
+  
+  .update-user-box {
+    width: 90%;
+    max-width: 450px;
+    background-color: #0A192F;
+    border-radius: 15px;
+    padding: 35px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    color: white;
+  }
+  
+  .update-user-form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .update-user-form .form-control {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    transition: border 0.3s ease-in-out;
+  }
+  
+  .update-user-form .form-control:focus {
+    background-color: transparent;
+    border-color: #1E90FF;
+    box-shadow: 0px 0px 5px rgba(30, 144, 255, 0.5);
+    outline: none;
+  }
+  
+  .update-user-form label {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .update-user-form .btn-primary {
+    background-color: #1E90FF;
+    border: none;
+  }
+  
+  .update-user-form .btn-primary:hover {
+    background-color: #0d6efd;
+  }
+  
+  @media (max-width: 768px) {
+    .update-user-box {
+      padding: 20px;
+    }
+  }
+  
