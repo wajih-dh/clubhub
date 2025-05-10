@@ -7,7 +7,7 @@ import { ManageEventsComponent } from './admin/manage-events/manage-events.compo
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
-
+import { PendingEventsComponent } from './pending-events/pending-events.component';
 export const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
@@ -18,6 +18,12 @@ export const routes: Routes = [
     component: EventComponent,
     canActivate: [AuthGuard],
     data: { roles: ['Admin', 'Student'] }
+  },
+  {
+    path: 'pending-events',
+    component: PendingEventsComponent,
+    canActivate: [AuthGuard],
+    data: { roles: 'Admin' }
   },
   { 
     path: 'add-user', 

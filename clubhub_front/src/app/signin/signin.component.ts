@@ -33,7 +33,7 @@ export class SigninComponent {
 
   redirectUserBasedOnRole(role: string): void {
     if (role === 'Admin') {
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/pending-events']);
     } else if (role === 'Organisator') {
       this.router.navigate(['/Organisator']);
     } else if (role === 'Student') {

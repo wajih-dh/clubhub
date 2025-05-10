@@ -9,14 +9,37 @@ const Event = {
       });
     });
   },
-
+  getAcceptedEvents: () => {
+    return new Promise((resolve, reject) => {
+      db.query("SELECT * FROM events where status = 'accepted'", (err, results) => {
+        if (err) return reject(err);
+        resolve(results);
+      });
+    });
+  },
+  getPendingEvents: () => {
+    return new Promise((resolve, reject) => {
+      db.query("SELECT * FROM events where status = 'pending'", (err, results) => {
+        if (err) return reject(err);
+        resolve(results);
+      });
+    });
+  },
+  getRefusedEvents: () => {
+    return new Promise((resolve, reject) => {
+      db.query("SELECT * FROM events where status = 'refused'", (err, results) => {
+        if (err) return reject(err);
+        resolve(results);
+      });
+    });
+  },
   create: async (eventData) => {
     const { title, description, date, time, location, organisator_id } = eventData;
     const [result] = await db.query(
-      `INSERT INTO events (title, description, date, time, location, organisator_id)
-       VALUES (?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO events (title, description, date, time, location, organisator_id, status)
+       VALUES (?, ?, ?, ?, ?, ?, 'pending')`,
       [title, description, date, time, location, organisator_id]
-    );
+    );    
     return { id: result.insertId, ...eventData };
   },
   
@@ -40,7 +63,25 @@ const Event = {
         resolve(result);
       });
     });
-  }
+  },
+  updateStatus: (id, status) => {
+    return new Promise((resolve, reject) => {
+      const validStatuses = ['pending', 'accepted', 'refused'];
+      if (!validStatuses.includes(status)) {
+        return reject(new Error('Invalid status value.'));
+      }
+  
+      const query = 'UPDATE events SET status = ? WHERE event_id = ?';
+      db.query(query, [status, id], (err, result) => {
+        if (err) return reject(err);
+        if (result.affectedRows === 0) {
+          return reject(new Error('Event not found.'));
+        }
+        resolve(result);
+      });
+    });
+  },
+  
   
 };
 

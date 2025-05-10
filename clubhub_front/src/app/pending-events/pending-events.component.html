@@ -1,0 +1,39 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Pending Events</h2>
+
+  <div class="card shadow p-4">
+    <h4>Pending Events List</h4>
+
+    <table class="table table-striped table-hover mt-3">
+      <thead class="table-dark">
+        <tr>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Location</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let event of pendingEvents">
+          <td>{{ event.title }}</td>
+          <td>{{ event.date }}</td>
+          <td>{{ event.time }}</td>
+          <td>{{ event.location }}</td>
+          <td>{{ event.description }}</td>
+          <td>
+            <button class="btn btn-sm btn-success me-2" (click)="updateStatus(event.event_id, 'accepted')">✔️ Accept</button>
+            <button class="btn btn-sm btn-danger" (click)="updateStatus(event.event_id, 'refused')">❌ Refuse</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="pendingEvents.length === 0" class="text-center text-muted">
+      No pending events.
+    </div>
+  </div>
+</div>
