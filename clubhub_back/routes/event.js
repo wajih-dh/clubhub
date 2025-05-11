@@ -83,28 +83,28 @@ router.get('/refused', async (req, res) => {
     res.status(500).json({ message: 'Error fetching refused events', error: err.message });
   }
 });
-// CREATE event (POST)
-router.post('/', async (req, res) => {
-  const { title, description, date, time, location, organisator_id } = req.body;
+  // CREATE event (POST)
+  router.post('/', async (req, res) => {
+    const { title, description, date, time, location, user_id } = req.body;
 
-  if (!title || !date || !time || !organisator_id) {
-    return res.status(400).json({ message: 'Missing required fields' });
-  }
+    if (!title || !date || !time || !user_id) {
+      return res.status(400).json({ message: 'Missing required fields' });
+    }
 
-  try {
-    const newEvent = await Event.create({
-      title,
-      description,
-      date,
-      time,
-      location,
-      organisator_id
-    });
-    res.json({ message: 'Event created successfully', event: newEvent });
-  } catch (err) {
-    res.json({ message: 'Error creating event', error: err.message });
-  }
-});
+    try {
+      const newEvent = await Event.create({
+        title,
+        description,
+        date,
+        time,
+        location,
+        user_id
+      });
+      res.json({ message: 'Event created successfully', event: newEvent });
+    } catch (err) {
+      res.json({ message: 'Error creating event', error: err.message })     ;
+    }
+  });
 
 // UPDATE event
 router.put('/:id', async (req, res) => {

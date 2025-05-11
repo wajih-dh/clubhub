@@ -21,7 +21,7 @@ export class ManageEventsComponent implements OnInit {
     date: '',
     time: '',
     location: '',
-    organisator_id: 1
+    user_id: 1
   };
 
   isEditing = false;
@@ -93,7 +93,7 @@ export class ManageEventsComponent implements OnInit {
       date: event.date,
       time: event.time,
       location: event.location,
-      organisator_id: event.organisator_id
+      user_id: event.user_id
     };
   }
 
@@ -110,7 +110,7 @@ export class ManageEventsComponent implements OnInit {
       date: '',
       time: '',
       location: '',
-      organisator_id: 1
+      user_id: 1
     };
   }
 }

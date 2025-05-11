@@ -34,21 +34,21 @@ const Event = {
     });
   },
   create: async (eventData) => {
-    const { title, description, date, time, location, organisator_id } = eventData;
+    const { title, description, date, time, location, user_id } = eventData;
     const [result] = await db.query(
-      `INSERT INTO events (title, description, date, time, location, organisator_id, status)
+      `INSERT INTO events (title, description, date, time, location, user_id, status)
        VALUES (?, ?, ?, ?, ?, ?, 'pending')`,
-      [title, description, date, time, location, organisator_id]
+      [title, description, date, time, location, user_id]
     );    
     return { id: result.insertId, ...eventData };
   },
   
-  update: (id, { title, description, date, time, location, organisator_id }) => {
+  update: (id, { title, description, date, time, location, user_id }) => {
     const query = `UPDATE events
-                   SET title = ?, description = ?, date = ?, time = ?, location = ?, organisator_id = ?
+                   SET title = ?, description = ?, date = ?, time = ?, location = ?, user_id = ?
                    WHERE event_id = ?`;
     return new Promise((resolve, reject) => {
-      db.query(query, [title, description, date, time, location, organisator_id, id], (err, result) => {
+      db.query(query, [title, description, date, time, location, user_id, id], (err, result) => {
         if (err) return reject(err);
         resolve(result);
       });
