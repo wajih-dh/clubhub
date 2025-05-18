@@ -1,27 +1,70 @@
 <div class="login-container">
-    <div class="login-box">
-      
-      <div class="right-section">
-        <form class="login-form" (ngSubmit)="onSubmit()">
-          <h3 class="text-center mb-4">Sign In</h3>
-  
-          <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" [(ngModel)]="credentials.email" name="email" required>
+  <div class="login-box">
+    <!-- Left Section with Logo and Illustration -->
+    <div class="left-section">
+      <div class="logo-container">
+        <div class="logo">
+          <div class="logo-icon">
+            <span class="logo-c">C</span>
+            <span class="logo-h">H</span>
           </div>
-  
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" [(ngModel)]="credentials.password" name="password" required>
-          </div>
-  
-          <button type="submit" class="btn btn-primary w-100">Sign In</button>
-  
-          <div class="mt-3 text-center">
-            <a href="/signup" class="text-decoration-none">Don't have an account? Sign up</a>
-          </div>
-        </form>
+        </div>
       </div>
+      
+      <div class="welcome-text">
+        <h2>Welcome Back!</h2>
+        <p>Sign in to access your account and explore campus events</p>
+      </div>
+      
+      <!-- SVG Illustration -->
+      <img src="/assets/images/signin-illustration.png" alt="Sign In" class="illustration" onerror="this.style.display='none'">
+    </div>
+    
+    <!-- Right Section with Form -->
+    <div class="right-section">
+      <form class="login-form" (ngSubmit)="onSubmit()">
+        <h3 class="text-center">Sign In</h3>
+        
+        <div class="mb-4">
+          <label for="email" class="form-label">Email address</label>
+          <input 
+            type="email" 
+            class="form-control" 
+            id="email" 
+            [(ngModel)]="credentials.email" 
+            name="email" 
+            required
+            placeholder="Enter your email"
+          >
+        </div>
+        
+        <div class="mb-4">
+          <label for="password" class="form-label">Password</label>
+          <input 
+            type="password" 
+            class="form-control" 
+            id="password" 
+            [(ngModel)]="credentials.password" 
+            name="password" 
+            required
+            placeholder="Enter your password"
+          >
+        </div>
+        
+        <button type="submit" class="btn btn-primary w-100">
+          Sign In
+        </button>
+        
+        <div class="mt-4 text-center">
+          <a href="/signup" class="text-decoration-none">Don't have an account? Sign up</a>
+        </div>
+      </form>
     </div>
   </div>
   
+  <!-- Background Shapes -->
+  <div class="background-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+  </div>
+</div>

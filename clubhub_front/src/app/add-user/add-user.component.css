@@ -1,64 +1,94 @@
 .add-user-container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('/assets/bg0.avif'); /* Keep background consistent */
-    background-size: cover;
-    background-position: center;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa, #e4e8f0);
+  padding: 20px;
+}
+
+.add-user-box {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.add-user-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.add-user-box h3 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.add-user-box h3:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #3498db, #2980b9);
+  border-radius: 2px;
+}
+
+.add-user-form .form-label {
+  font-weight: 500;
+  color: #34495e;
+}
+
+.add-user-form .form-control {
+  border-radius: 8px;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s;
+  background-color: #f8f9fa;
+}
+
+.add-user-form .form-control:focus {
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  border-color: #3498db;
+  background-color: white;
+}
+
+.add-user-form .btn-primary {
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 500;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+.add-user-form .btn-primary:hover {
+  background: linear-gradient(45deg, #2980b9, #3498db);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(41, 128, 185, 0.3);
+}
+
+.add-user-form a {
+  color: #3498db;
+  transition: all 0.3s;
+}
+
+.add-user-form a:hover {
+  color: #2980b9;
+  text-decoration: underline !important;
+}
+
+@media (max-width: 576px) {
   .add-user-box {
-    width: 90%;
-    max-width: 450px;
-    background-color: #0A192F;
-    border-radius: 15px;
-    padding: 35px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-    color: white;
+    padding: 25px;
   }
-  
-  .add-user-form {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .add-user-form .form-control {
-    background-color: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: white;
-    transition: border 0.3s ease-in-out;
-  }
-  
-  .add-user-form .form-control:focus {
-    background-color: transparent;
-    border-color: #1E90FF;
-    box-shadow: 0px 0px 5px rgba(30, 144, 255, 0.5);
-    outline: none;
-  }
-  
-  .add-user-form label {
-    color: white;
-    font-weight: bold;
-  }
-  
-  .add-user-form .btn-primary {
-    background-color: #1E90FF;
-    border: none;
-  }
-  
-  .add-user-form .btn-primary:hover {
-    background-color: #0d6efd;
-  }
-  
-  .add-user-form a {
-    color: #1E90FF;
-  }
-  
-  .add-user-form a:hover {
-    text-decoration: underline;
-  }
-  
+}

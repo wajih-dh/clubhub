@@ -17,7 +17,7 @@ export const AuthGuard: CanActivateFn = (route, state) => {
     const role = payload.role;
 
     // Only allow Admin or Student
-    if (role === 'Admin' || role === 'Student') {
+    if (role === 'Admin' || role === 'Student' || role === 'Organisator') {
       return true;
     } else {
       router.navigate(['/signin']);

@@ -1,0 +1,258 @@
+/* Main Styles */
+body {
+  background-color: #f8f9fa;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+/* Page Header */
+h2.page-title {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+h2.page-title:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #3498db, #2980b9);
+  border-radius: 2px;
+}
+
+/* Cards */
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card h4 {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f1f1f1;
+}
+
+/* Stats Cards */
+.stats-card {
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+  transform: translateY(-5px);
+}
+
+.stats-card .icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.stats-card .count {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.stats-card .label {
+  font-size: 1rem;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.stats-card.pending {
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  color: white;
+}
+
+.stats-card.accepted {
+  background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+  color: white;
+}
+
+.stats-card.refused {
+  background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
+  color: white;
+}
+
+.stats-card .label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Progress Bars */
+.progress {
+  height: 10px;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  border-radius: 5px;
+}
+
+.progress-bar-pending {
+  background: linear-gradient(90deg, #f6d365, #fda085);
+}
+
+.progress-bar-accepted {
+  background: linear-gradient(90deg, #43cea2, #185a9d);
+}
+
+.progress-bar-refused {
+  background: linear-gradient(90deg, #ff9966, #ff5e62);
+}
+
+/* Donut Chart */
+.donut-chart-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.donut-chart {
+  width: 100%;
+  height: 100%;
+}
+
+.chart-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.chart-center .total {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+}
+
+.chart-center .label {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+/* Tables */
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.table th {
+  font-weight: 600;
+  padding: 15px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.table td {
+  padding: 15px;
+  vertical-align: middle;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.table-dark {
+  background: linear-gradient(45deg, #2c3e50, #34495e);
+}
+
+/* Buttons */
+.btn {
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-success {
+  background: linear-gradient(45deg, #2ecc71, #27ae60);
+  border: none;
+}
+
+.btn-success:hover {
+  background: linear-gradient(45deg, #27ae60, #2ecc71);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+}
+
+.btn-danger {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  border: none;
+}
+
+.btn-danger:hover {
+  background: linear-gradient(45deg, #c0392b, #e74c3c);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+}
+
+/* Empty state */
+.text-muted {
+  font-style: italic;
+  padding: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .stats-row {
+    flex-direction: column;
+  }
+  
+  .stats-card {
+    margin-bottom: 1rem;
+  }
+  
+  .donut-chart-container {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 15px !important;
+  }
+  
+  .table th, .table td {
+    padding: 10px;
+  }
+  
+  .btn-sm {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+}

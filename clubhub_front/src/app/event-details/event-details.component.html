@@ -1,0 +1,63 @@
+<div class="event-details-container">
+  <div class="event-card">
+    <!-- Event Header -->
+    <div class="event-header">
+      <span class="event-date-badge">
+        <i class="bi bi-calendar me-2"></i>{{ event?.date | date:'EEEE, MMMM d, y' }}
+      </span>
+      <h1 class="event-title">{{ event?.title }}</h1>
+    </div>
+    
+    <!-- Event Body -->
+    <div class="event-body">
+      <ul class="event-info-list">
+        <li class="event-info-item">
+          <div class="event-info-icon">
+            <i class="bi bi-clock"></i>
+          </div>
+          <div class="event-info-content">
+            <div class="event-info-label">Time</div>
+            <div class="event-info-value">{{ event?.time }}</div>
+          </div>
+        </li>
+        
+        <li class="event-info-item">
+          <div class="event-info-icon">
+            <i class="bi bi-geo-alt"></i>
+          </div>
+          <div class="event-info-content">
+            <div class="event-info-label">Location</div>
+            <div class="event-info-value">{{ event?.location || 'Location not specified' }}</div>
+          </div>
+        </li>
+
+        <!-- Added Description Section -->
+        <li class="event-info-item">
+          <div class="event-info-icon">
+            <i class="bi bi-info-circle"></i>
+          </div>
+          <div class="event-info-content">
+            <div class="event-info-label">Description</div>
+            <div class="event-info-value description-text">{{ event?.description || 'No description available' }}</div>
+          </div>
+        </li>
+      </ul>
+      
+      <!-- Success Message -->
+      <div class="success-message" *ngIf="successMessage">
+        <i class="bi bi-check-circle-fill"></i>
+        <div>{{ successMessage }}</div>
+      </div>
+      
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="btn btn-primary" (click)="register()">
+          <i class="bi bi-calendar-check me-2"></i>Register for Event
+        </button>
+        <button class="btn btn-secondary" (click)="goBack()">
+          <i class="bi bi-arrow-left me-2"></i>Back to Calendar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

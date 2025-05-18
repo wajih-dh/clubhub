@@ -35,7 +35,7 @@ export class SigninComponent {
     if (role === 'Admin') {
       this.router.navigate(['/pending-events']);
     } else if (role === 'Organisator') {
-      this.router.navigate(['/Organisator']);
+      this.router.navigate(['/organizer-dashboard']);
     } else if (role === 'Student') {
       this.router.navigate(['/event']); 
     } else {

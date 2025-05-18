@@ -128,5 +128,18 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ message: 'Error deleting event', error: err.message });
   }
 });
+// Get ACCEPTED events of a specific organizer including participants
+router.get('/accepted/organizer/:userId', async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const events = await Event.getAcceptedEventsByOrganizerWithParticipants(userId);
+    res.json(events);
+  } catch (err) {
+    console.error('❌ Error fetching accepted events for organizer:', err);
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+});
+
 
 module.exports = router;

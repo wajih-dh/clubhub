@@ -26,7 +26,15 @@ router.post('/', async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    res.json({ message: 'Signin successful', token, role: user.role });
+    // ✅ Include name and email in response
+    res.json({
+      message: 'Signin successful',
+      token,
+      role: user.role,
+      user_id: user.user_id,
+      name: user.username,
+      email: user.email
+    });
   } catch (err) {
     res.status(500).json({ message: 'Internal Server Error', error: err.message });
   }

@@ -2,6 +2,15 @@
 
 <div class="admin-container">
   <div class="admin-box">
+    <h2 class="text-center mb-4 page-title">User Management</h2>
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h4 class="mb-0"><i class="bi bi-people me-2"></i>User List</h4>
+      <button class="btn btn-success" routerLink="/add-user">
+        <i class="bi bi-person-plus me-2"></i>Add User
+      </button>
+    </div>
+    
     <div class="table-section">
       <table class="table table-striped table-hover">
         <thead class="table-dark">
@@ -16,18 +25,31 @@
         <tbody>
           <tr *ngFor="let user of users; let i = index">
             <td>{{ i + 1 }}</td>
-            <td>{{ user.username }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.role }}</td>
+            <td><strong>{{ user.username }}</strong></td>
+            <td><i class="bi bi-envelope me-1"></i>{{ user.email }}</td>
             <td>
-              <button class="btn btn-primary btn-sm" (click)="onUpdate(user.user_id)">Update</button>
-              <button class="btn btn-danger btn-sm" (click)="onDelete(user.user_id)">Delete</button>
+              <span class="badge" [ngClass]="{
+                'bg-danger': user.role === 'Admin',
+                'bg-success': user.role === 'Organisator',
+                'bg-primary': user.role === 'Student'
+              }">{{ user.role }}</span>
+            </td>
+            <td>
+              <button class="btn btn-primary btn-sm me-2" (click)="onUpdate(user.user_id)">
+                <i class="bi bi-pencil me-1"></i>Update
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="onDelete(user.user_id)">
+                <i class="bi bi-trash me-1"></i>Delete
+              </button>
             </td>
           </tr>
         </tbody>
       </table>
-      <button class="btn btn-success" routerLink="/add-user">Add User</button>
+      
+      <div *ngIf="users.length === 0" class="text-center text-muted p-4">
+        <i class="bi bi-people-fill fs-1 d-block mb-2"></i>
+        No users available.
+      </div>
     </div>
   </div>
 </div>
-

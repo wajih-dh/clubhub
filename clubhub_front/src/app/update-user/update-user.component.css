@@ -1,63 +1,91 @@
 .update-user-container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('/assets/bg0.avif'); /* Consistent background */
-    background-size: cover;
-    background-position: center;
-    padding: 20px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa, #e4e8f0);
+  padding: 20px;
+}
+
+.update-user-box {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.update-user-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.update-user-box h2 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.update-user-box h2:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #3498db, #2980b9);
+  border-radius: 2px;
+}
+
+.update-user-form .form-label {
+  font-weight: 500;
+  color: #34495e;
+}
+
+.update-user-form .form-control,
+.update-user-form .form-select {
+  border-radius: 8px;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s;
+  background-color: #f8f9fa;
+}
+
+.update-user-form .form-control:focus,
+.update-user-form .form-select:focus {
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  border-color: #3498db;
+  background-color: white;
+}
+
+.update-user-form .btn-primary {
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 500;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+.update-user-form .btn-primary:hover {
+  background: linear-gradient(45deg, #2980b9, #3498db);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(41, 128, 185, 0.3);
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+@media (max-width: 576px) {
   .update-user-box {
-    width: 90%;
-    max-width: 450px;
-    background-color: #0A192F;
-    border-radius: 15px;
-    padding: 35px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-    color: white;
+    padding: 25px;
   }
-  
-  .update-user-form {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .update-user-form .form-control {
-    background-color: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: white;
-    transition: border 0.3s ease-in-out;
-  }
-  
-  .update-user-form .form-control:focus {
-    background-color: transparent;
-    border-color: #1E90FF;
-    box-shadow: 0px 0px 5px rgba(30, 144, 255, 0.5);
-    outline: none;
-  }
-  
-  .update-user-form label {
-    color: white;
-    font-weight: bold;
-  }
-  
-  .update-user-form .btn-primary {
-    background-color: #1E90FF;
-    border: none;
-  }
-  
-  .update-user-form .btn-primary:hover {
-    background-color: #0d6efd;
-  }
-  
-  @media (max-width: 768px) {
-    .update-user-box {
-      padding: 20px;
-    }
-  }
-  
+}

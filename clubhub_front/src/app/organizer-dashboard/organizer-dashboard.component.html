@@ -1,0 +1,214 @@
+<div class="container-fluid">
+  <div class="dashboard-container">
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <h1 class="dashboard-title">Event Organizer Dashboard</h1>
+          <p class="dashboard-subtitle">Create and manage your club events, track participation, and engage with your community.</p>
+        </div>
+        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+          <div class="header-actions">
+            <button class="btn btn-outline-light" (click)="logOut()">
+              <i class="bi bi-box-arrow-right me-2"></i>Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Message for Submitted Event -->
+    <div *ngIf="submittedEvent" class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+      <div class="d-flex align-items-center">
+        <i class="bi bi-check-circle-fill fs-4 me-3"></i>
+        <div>
+          <strong>Event Submitted Successfully!</strong>
+          <p class="mb-0">Your event "<strong>{{ submittedEvent.title }}</strong>" has been submitted and is pending approval.</p>
+        </div>
+      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="submittedEvent = null"></button>
+    </div>
+
+    <!-- Create Event Section -->
+    <div class="create-event-section">
+      <h2 class="section-title">
+        <i class="bi bi-calendar-plus"></i>
+        Create New Event
+      </h2>
+      <p class="section-subtitle">Fill in the details below to create a new event for your club. All events require approval before they become visible to students.</p>
+      
+      <form (ngSubmit)="submitEvent()" class="row g-4">
+        <div class="col-md-12">
+          <label for="title" class="form-label">Event Title</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-type"></i></span>
+            <input 
+              type="text" 
+              id="title"
+              [(ngModel)]="newEvent.title" 
+              name="title" 
+              class="form-control" 
+              placeholder="Enter a descriptive title for your event" 
+              required 
+            />
+          </div>
+        </div>
+        
+        <div class="col-md-12">
+          <label for="description" class="form-label">Event Description</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-text-paragraph"></i></span>
+            <textarea 
+              id="description"
+              [(ngModel)]="newEvent.description" 
+              name="description" 
+              class="form-control" 
+              placeholder="Provide details about your event, including what participants can expect"
+              rows="4"
+            ></textarea>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <label for="date" class="form-label">Event Date</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-calendar-date"></i></span>
+            <input 
+              type="date" 
+              id="date"
+              [(ngModel)]="newEvent.date" 
+              name="date" 
+              class="form-control" 
+              required 
+            />
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <label for="time" class="form-label">Event Time</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-clock"></i></span>
+            <input 
+              type="time" 
+              id="time"
+              [(ngModel)]="newEvent.time" 
+              name="time" 
+              class="form-control" 
+              required 
+            />
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <label for="location" class="form-label">Event Location</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+            <input 
+              type="text" 
+              id="location"
+              [(ngModel)]="newEvent.location" 
+              name="location" 
+              class="form-control" 
+              placeholder="Where will the event take place?" 
+            />
+          </div>
+        </div>
+        
+        <div class="col-12 mt-4">
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-send me-2"></i>Submit Event
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Accepted Events Section -->
+    <div class="events-section">
+      <div class="events-header">
+        <h2 class="section-title mb-0">
+          <i class="bi bi-check-circle"></i>
+          Approved Events
+          <span class="events-count">{{ acceptedEvents.length }}</span>
+        </h2>
+        <div>
+          <button class="btn btn-outline-primary btn-sm">
+            <i class="bi bi-calendar-week me-1"></i> Calendar View
+          </button>
+        </div>
+      </div>
+
+      <!-- Events Grid -->
+      <div *ngIf="acceptedEvents.length > 0; else noEvents" class="row g-4">
+        <div *ngFor="let event of acceptedEvents" class="col-lg-6 mb-4">
+          <div class="event-card">
+            <div class="card-header">
+              <span class="event-badge">Approved</span>
+              <h5 class="card-title">{{ event.title }}</h5>
+              <div class="d-flex align-items-center text-white-50">
+                <i class="bi bi-calendar me-2"></i>
+                <span>{{ event.date | date:'EEEE, MMMM d, y' }}</span>
+              </div>
+            </div>
+            
+            <div class="card-body">
+              <div class="event-info">
+                <i class="bi bi-clock"></i>
+                <span>{{ event.time }}</span>
+              </div>
+              
+              <div class="event-info">
+                <i class="bi bi-geo-alt"></i>
+                <span>{{ event.location || 'Location not specified' }}</span>
+              </div>
+              
+              <div class="event-info" *ngIf="event.description">
+                <i class="bi bi-info-circle"></i>
+                <span>{{ event.description }}</span>
+              </div>
+              
+              <div class="participants-section">
+                <div class="participants-header">
+                  <div class="participants-title">
+                    <i class="bi bi-people"></i>
+                    Participants
+                    <span class="participants-count">{{ event.participants?.length || 0 }}</span>
+                  </div>
+                </div>
+                
+                <div *ngIf="event.participants && event.participants.length > 0; else noParticipants">
+                  <div *ngFor="let p of event.participants" class="participant-item">
+                    <div class="participant-avatar">
+                      {{ p.name.charAt(0).toUpperCase() }}
+                    </div>
+                    <div class="participant-info">
+                      <div class="participant-name">{{ p.name }}</div>
+                      <div class="participant-email">{{ p.email || 'No email provided' }}</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <ng-template #noParticipants>
+                  <div class="text-center py-3">
+                    <i class="bi bi-emoji-neutral fs-4 d-block mb-2 text-muted"></i>
+                    <p class="text-muted mb-0">No participants have registered yet.</p>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Events Template -->
+      <ng-template #noEvents>
+        <div class="empty-state">
+          <div class="empty-state-icon">
+            <i class="bi bi-calendar-x"></i>
+          </div>
+          <p class="empty-state-text">You don't have any approved events yet.</p>
+          <p class="empty-state-subtext">Events you create will appear here once they're approved by an administrator. Create your first event using the form above.</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

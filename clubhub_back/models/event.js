@@ -81,8 +81,31 @@ const Event = {
       });
     });
   },
-  
-  
+  getAcceptedEventsByOrganizerWithParticipants: (userId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      // First, get accepted events by organizer
+      const [events] = await db.promise().query(
+        'SELECT * FROM events WHERE user_id = ? AND status = "accepted"',
+        [userId]
+      );
+
+      // For each event, get its participants
+      for (const event of events) {
+        const [participants] = await db.promise().query(
+          'SELECT name, email FROM participants WHERE event_id = ?',
+          [event.event_id]
+        );
+        event.participants = participants;
+      }
+
+      resolve(events);
+    } catch (err) {
+      reject(err);
+    }
+  });
+}
+
 };
 
 module.exports = Event;
