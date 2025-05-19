@@ -12,12 +12,13 @@ const deleteUserRoutes = require('./routes/delete-user');
 const updateUserRoutes = require('./routes/update-user');
 const getUserByIdRoutes = require('./routes/get-user-by-id');
 const participantRoute = require('./routes/participant');
-
+const emailRoutes = require('./routes/email');
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use('/api/participant', participantRoute);
+app.use('/api/email', emailRoutes);
 app.use('/api/signup', signupRoute);
 app.use('/api/signin', signinRoute);
 app.use('/api/events', eventRoute);
